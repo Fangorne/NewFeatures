@@ -1,7 +1,8 @@
 ﻿using BenchmarkDotNet.Running;
 using SpanDemo;
 
-var summary = BenchmarkRunner.Run<SpanVsString>();
-Console.ReadLine();
+var summary1 = BenchmarkRunner.Run<SpanWithInt>();
 
-Console.WriteLine("Hello, World!");
+//var summary2 = BenchmarkRunner.Run<SpanVsString>();
+
+Console.ReadLine();

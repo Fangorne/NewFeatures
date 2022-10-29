@@ -6,7 +6,7 @@ public class SpanVsString
 {
     #region fields
 
-    private readonly string _hamletText;
+    private readonly string _text;
 
     #endregion
 
@@ -15,7 +15,7 @@ public class SpanVsString
     public SpanVsString()
     {
         using StreamReader streamReader = File.OpenText("le-petit-prince--antoine-de-saint-exupery.txt");
-        _hamletText = streamReader.ReadToEnd();
+        _text = streamReader.ReadToEnd();
     }
 
     #endregion
@@ -28,12 +28,12 @@ public class SpanVsString
         var indexPrev = 0;
         var indexCurrent = 0;
         var rowNum = 0;
-        foreach (var c in _hamletText)
+        foreach (var c in _text)
         {
             if (c == '\n')
             {
                 indexCurrent += 1;
-                var line = _hamletText.Substring(indexPrev, indexCurrent - indexPrev);
+                var line = _text.Substring(indexPrev, indexCurrent - indexPrev);
                 if (line.Equals("\n"))
                     rowNum++;
                 indexPrev = indexCurrent;
@@ -47,16 +47,16 @@ public class SpanVsString
     [Benchmark]
     public void ParseWithSpan()
     {
-        var hamletSpan = _hamletText.AsSpan();
+        var spanText = _text.AsSpan();
         var indexPrev = 0;
         var indexCurrent = 0;
         var rowNum = 0;
-        foreach (var c in hamletSpan)
+        foreach (var c in spanText)
         {
             if (c == '\n')
             {
                 indexCurrent += 1;
-                var slice = hamletSpan.Slice(indexPrev, indexCurrent - indexPrev);
+                var slice = spanText.Slice(indexPrev, indexCurrent - indexPrev);
                 if (slice.Equals("\n", StringComparison.OrdinalIgnoreCase))
                     rowNum++;
                 indexPrev = indexCurrent;

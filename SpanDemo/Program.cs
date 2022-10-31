@@ -3,6 +3,6 @@ using SpanDemo;
 
 BenchmarkRunner.Run<SpanWithInt>();
 
-BenchmarkRunner.Run<SpanVsString>();
+//BenchmarkRunner.Run<SpanVsString>();
 
 Console.ReadLine();

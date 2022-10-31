@@ -27,7 +27,7 @@ public class SpanWithInt
     [GlobalSetup]
     public void Setup()
     {
-        _items = Enumerable.Range(1, 100).Select(_ => _random.Next()).ToList();
+        _items = Enumerable.Range(1, Size).Select(_ => _random.Next()).ToList();
     }
 
     [Benchmark]

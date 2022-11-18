@@ -64,6 +64,7 @@ public class SpanWithInt
     {
         foreach (var item in CollectionsMarshal.AsSpan(_items))
         {
+            var i = item;
         }
     }
 
